@@ -13,6 +13,10 @@ Page({
         // complete
       }
     })
+    // console.log("onTap");
+  },
+  onViewTap: function() {
+    // console.log("onViewTap");
   },
 
 
