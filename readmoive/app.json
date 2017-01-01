@@ -2,7 +2,8 @@
   "pages":[
     "pages/welcome/welcome",
     "pages/posts/posts",
-    "pages/posts/posts-item/posts-item"
+    "pages/posts/posts-item/posts-item",
+    "pages/posts/posts-detail/posts-detail"
     
   ],
   "window":{

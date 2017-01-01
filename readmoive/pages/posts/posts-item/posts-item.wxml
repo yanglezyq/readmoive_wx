@@ -1,17 +1,17 @@
  <template name="postItem" >
     <view class="posts-container">
             <view class="posts-author-date">
-                <image wx:if="{{condition}}" class="posts-author" src="{{item.avatar}}"></image>
-                <text class="posts-date">{{item.date}}</text>
+                <image wx:if="{{condition}}" class="posts-author" src="{{avatar}}"></image>
+                <text class="posts-date">{{date}}</text>
             </view>
-            <text class="posts-title">{{item.title}}</text>
-            <image class="posts-image" src="{{item.imgSrc}}"></image>
-            <text class="posts-content">{{item.content}}</text>
+            <text class="posts-title">{{title}}</text>
+            <image class="posts-image" src="{{imgSrc}}"></image>
+            <text class="posts-content">{{content}}</text>
             <view class="posts-like" >
                 <image  class="posts-like-image"  src="../../images/icon/chat.png"></image>
-                <text class="posts-like-font" >{{item.collection}}</text>
+                <text class="posts-like-font" >{{collection}}</text>
                 <image  class="posts-like-image"  src="../../images/icon/view.png"></image>
-                <text class="posts-like-font" >{{item.reading}}</text>
+                <text class="posts-like-font" >{{reading}}</text>
             </view>
         
         </view>
