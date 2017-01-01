@@ -11,7 +11,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#405f80",
-    "navigationBarTitleText": "小程序Demo",
+    "navigationBarTitleText": "豆瓣",
     "navigationBarTextStyle":"white"
   }
 }

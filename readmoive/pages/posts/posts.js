@@ -7,9 +7,9 @@ Page({
     condition: true,
   },
   onItemTap: function (event) {
-    console.log("onItemTap" + event.currentTarget.dataset.postid);
+    // console.log("onItemTap" + event.currentTarget.dataset.postid);
     wx.navigateTo({
-      url: 'posts-detail/posts-detail',
+      url: 'posts-detail/posts-detail?id='+event.currentTarget.dataset.postid ,
       success: function(res){
         // success
       },
@@ -29,7 +29,7 @@ Page({
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
 
-    console.log("postdata: " + postData);
+    console.log("postdata: " + postData.postDataList);
 
     // this.data.posts_key = postData.localData;
     this.setData({
