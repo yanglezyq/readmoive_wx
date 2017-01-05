@@ -3,8 +3,8 @@
 var postsData = require("../../../data/posts_data.js");
 
 Page({
-  data:{},
-  onLoad:function(options){
+  data: {},
+  onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     var postId = options.id;
     this.data.currentPostId = postId;
@@ -19,10 +19,10 @@ Page({
 
     var postsCollected = wx.getStorageSync(posts_collected_key);
     if (postsCollected) {
-        var postCollected = postsCollected[postId];
-        this.setData({
-          collected: postCollected,
-        });
+      var postCollected = postsCollected[postId];
+      this.setData({
+        collected: postCollected,
+      });
     } else {
       postsCollected = {};
       postsCollected[postId] = false;
@@ -30,7 +30,7 @@ Page({
     }
   },
 
-  onCollectionTap: function(event) {
+  onCollectionTap: function (event) {
     var posts_collected_key = "posts_collected_key";
     var postId = this.data.currentPostId;
     var postsCollected = wx.getStorageSync(posts_collected_key);
@@ -41,18 +41,25 @@ Page({
     this.setData({
       collected: postCollected,
     });
+    wx.showToast({
+      title: postCollected?'收藏成功':'取消成功',
+      icon: 'success',
+      duration: 2000
+    })
+
+
   },
 
-  onReady:function(){
+  onReady: function () {
     // 页面渲染完成
   },
-  onShow:function(){
+  onShow: function () {
     // 页面显示
   },
-  onHide:function(){
+  onHide: function () {
     // 页面隐藏
   },
-  onUnload:function(){
+  onUnload: function () {
     // 页面关闭
   }
 })
