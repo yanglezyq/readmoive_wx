@@ -3,7 +3,9 @@
 var postsData = require("../../../data/posts_data.js");
 
 Page({
-  data: {},
+  data: {
+    isPlayingMusic: false,
+  },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     var postId = options.id;
@@ -42,34 +44,54 @@ Page({
       collected: postCollected,
     });
     wx.showToast({
-      title: postCollected?'收藏成功':'取消成功',
+      title: postCollected ? '收藏成功' : '取消成功',
       icon: 'success',
       duration: 2000
     })
 
 
   },
-  
 
-  onPlayMusicTap : function(event) {
-    console.log("play");
+
+  onPlayMusicTap: function (event) {
     var url = "http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46";
-     var  title =  "此时此刻";
-     var  coverImg = "../images/music/xuwei.jpg";
-    wx.playBackgroundAudio({
-      dataUrl: url,
-      title: title,
-      coverImgUrl: coverImg,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    });
+    var title = "此时此刻";
+    var coverImg = "../images/music/xuwei.jpg";
+    if (!this.data.isPlayingMusic) {
+      wx.playBackgroundAudio({
+        dataUrl: url,
+        title: title,
+        coverImgUrl: coverImg,
+        success: function (res) {
+          // success
+        },
+        fail: function () {
+          // fail
+        },
+        complete: function () {
+          // complete
+        }
+      });
+      this.setData({
+        isPlayingMusic: true,
+      });
+    } else {
+      wx.pauseBackgroundAudio({
+        success: function (res) {
+          // success
+        },
+        fail: function () {
+          // failï
+        },
+        complete: function () {
+          // complete
+        }
+      });
+      this.setData({
+        isPlayingMusic: false,
+      });
+    }
+
   },
 
   onReady: function () {
