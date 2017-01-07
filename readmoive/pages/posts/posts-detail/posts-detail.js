@@ -32,6 +32,14 @@ Page({
       wx.setStorageSync(posts_collected_key, postsCollected);
     }
 
+    // 当再次进入页面时，需要根据音乐是否正在播放，来正确显示播放按钮
+    if(app.g_isPlayingMusic && 
+    app.g_isPlayingMusicPostId === postId) {
+      this.setData({
+        isPlayingMusic: true,
+      });
+    }
+
 
   },
 
@@ -88,12 +96,16 @@ Page({
             _this.setData({
               isPlayingMusic: false,
             });
+            app.g_isPlayingMusic = false;
+            app.g_isPlayingMusicPostId = null;
           });
 
           wx.onBackgroundAudioPlay(function (event) {
             _this.setData({
               isPlayingMusic: true,
             });
+            app.g_isPlayingMusic = true;
+            app.g_isPlayingMusicPostId = postId;
           })
         }
       });
