@@ -1,6 +1,7 @@
 // pages/posts/posts-detail/posts-detail.js
 
 var postsData = require("../../../data/posts_data.js");
+var app = getApp();
 
 Page({
   data: {
@@ -18,7 +19,7 @@ Page({
 
     var posts_collected_key = "posts_collected_key";
 
-//  初始化收藏信息字典
+    //  初始化收藏信息字典
     var postsCollected = wx.getStorageSync(posts_collected_key);
     if (postsCollected) {
       var postCollected = postsCollected[postId];
@@ -30,9 +31,11 @@ Page({
       postsCollected[postId] = false;
       wx.setStorageSync(posts_collected_key, postsCollected);
     }
+
+
   },
 
-// 收藏操作
+  // 收藏操作
   onCollectionTap: function (event) {
     var posts_collected_key = "posts_collected_key";
     var postId = this.data.currentPostId;
@@ -53,7 +56,7 @@ Page({
 
   },
 
-// 播放音乐
+  // 播放音乐
   onPlayMusicTap: function (event) {
     // var url = "http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46";
     // var title = "此时此刻";
@@ -64,25 +67,37 @@ Page({
     var postData = postsData.postDataList[postId];
 
     var musicVO = postData.music;
-
-    if (!this.data.isPlayingMusic) {
+    var _this = this;
+    if (!_this.data.isPlayingMusic) {
       wx.playBackgroundAudio({
         dataUrl: musicVO.url,
         title: musicVO.title,
         coverImgUrl: musicVO.coverImg,
         success: function (res) {
           // success
+          _this.setData({
+            isPlayingMusic: true,
+          });
         },
         fail: function () {
           // fail
         },
         complete: function () {
           // complete
+          wx.onBackgroundAudioPause(function (event) {
+            _this.setData({
+              isPlayingMusic: false,
+            });
+          });
+
+          wx.onBackgroundAudioPlay(function (event) {
+            _this.setData({
+              isPlayingMusic: true,
+            });
+          })
         }
       });
-      this.setData({
-        isPlayingMusic: true,
-      });
+
     } else {
       wx.pauseBackgroundAudio({
         success: function (res) {
