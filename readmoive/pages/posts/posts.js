@@ -9,14 +9,43 @@ Page({
   onItemTap: function (event) {
     // console.log("onItemTap" + event.currentTarget.dataset.postid);
     wx.navigateTo({
-      url: 'posts-detail/posts-detail?id='+event.currentTarget.dataset.postid ,
-      success: function(res){
+      url: 'posts-detail/posts-detail?id=' + event.currentTarget.dataset.postid,
+      success: function (res) {
         // success
       },
-      fail: function() {
+      fail: function () {
         // fail
       },
-      complete: function() {
+      complete: function () {
+        // complete
+      }
+    })
+  },
+  onSwiperItemTap: function (event) {
+    wx.navigateTo({
+      url: 'posts-detail/posts-detail?id=' + event.currentTarget.dataset.postid,
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
+
+  onSwiperTap: function (event) {
+    wx.navigateTo({
+      url: 'posts-detail/posts-detail?id=' + event.target.dataset.postid,
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
         // complete
       }
     })

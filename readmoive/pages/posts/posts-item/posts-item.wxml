@@ -8,9 +8,9 @@
             <image class="posts-image" src="{{imgSrc}}"></image>
             <text class="posts-content">{{content}}</text>
             <view class="posts-like" >
-                <image  class="posts-like-image"  src="../../images/icon/chat.png"></image>
+                <image  class="posts-like-image"  src="/images/icon/chat.png"></image>
                 <text class="posts-like-font" >{{collection}}</text>
-                <image  class="posts-like-image"  src="../../images/icon/view.png"></image>
+                <image  class="posts-like-image"  src="/images/icon/view.png"></image>
                 <text class="posts-like-font" >{{reading}}</text>
             </view>
         
