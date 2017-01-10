@@ -1,7 +1,10 @@
 // pages/welcome/welcome.js
 Page({
   onTap: function() {
-    wx.redirectTo({
+    // wx.redirectTo({
+    //   url: '../posts/posts',
+    // });
+    wx.switchTab({
       url: '../posts/posts',
       success: function(res){
         // success

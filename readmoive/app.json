@@ -1,10 +1,11 @@
 {
   "pages":[
-   "pages/posts/posts",
+   
     "pages/welcome/welcome",
-    
+    "pages/posts/posts",
     "pages/posts/posts-item/posts-item",
-     "pages/posts/posts-detail/posts-detail"
+    "pages/posts/posts-detail/posts-detail",
+    "pages/moives/moives"
     
     
   ],
@@ -13,6 +14,23 @@
     "navigationBarBackgroundColor": "#405f80",
     "navigationBarTitleText": "豆瓣",
     "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "borderStyle":"white",
+    "list": [
+      {
+      "pagePath": "pages/posts/posts",
+      "text": "文章",
+      "iconPath": "/images/tab/yuedu.png",
+      "selectedIconPath": "/images/tab/yuedu_hl.png"
+    },
+    {
+      "pagePath": "pages/moives/moives",
+      "text": "电影",
+      "iconPath": "/images/tab/dianying.png",
+      "selectedIconPath": "/images/tab/dianying_hl.png"
+    }
+    ]
   }
 }
 
